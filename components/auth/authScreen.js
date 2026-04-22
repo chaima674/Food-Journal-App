@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   View,
   TextInput,
-  Button,
   Text,
   StyleSheet,
   TouchableOpacity,
@@ -11,7 +10,7 @@ import {
   KeyboardAvoidingView,
   Platform
 } from 'react-native';
-import { executeSql } from '../database/database';
+import { executeSql, runSql } from '../database/database';
 
 const AuthScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -47,30 +46,34 @@ const AuthScreen = ({ navigation }) => {
           [email, password]
         );
         
-        if (result.rows.length > 0) {
-          navigation.navigate('Home', { userId: result.rows.item(0).id });
+        if (result.rows && result.rows.length > 0) {
+          const userId = result.rows[0].id;
+          navigation.navigate('Home', { userId: userId });
         } else {
           Alert.alert('Authentication Failed', 'Invalid email or password');
         }
       } else {
         // Registration logic
-        // First check if email exists
         const checkResult = await executeSql(
           'SELECT id FROM users WHERE email = ?',
           [email]
         );
         
-        if (checkResult.rows.length > 0) {
+        if (checkResult.rows && checkResult.rows.length > 0) {
           Alert.alert('Registration Failed', 'Email already exists');
           return;
         }
         
-        const insertResult = await executeSql(
+        const insertResult = await runSql(
           'INSERT INTO users (email, password) VALUES (?, ?)',
           [email, password]
         );
         
-        navigation.navigate('Home', { userId: insertResult.insertId });
+        if (insertResult.insertId) {
+          navigation.navigate('Home', { userId: insertResult.insertId });
+        } else {
+          Alert.alert('Registration Failed', 'Could not create account');
+        }
       }
     } catch (error) {
       console.error('Database error:', error);
@@ -108,12 +111,11 @@ const AuthScreen = ({ navigation }) => {
         />
         
         {isLoading ? (
-          <ActivityIndicator size="large" color="#0000ff" />
+          <ActivityIndicator size="large" color="#4285f4" />
         ) : (
           <TouchableOpacity
             style={styles.authButton}
             onPress={handleAuth}
-            disabled={isLoading}
           >
             <Text style={styles.authButtonText}>
               {isLogin ? 'Login' : 'Register'}
