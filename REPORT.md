@@ -92,16 +92,16 @@ const insertResult = await runSql(
 
 | Feature | Implementation | Status |
 |---------|---------------|--------|
-| User Registration | SQLite users table with unique email constraint | ✅ Working |
-| User Login | Email/password authentication | ✅ Working |
-| Gallery Image Picker | Expo ImagePicker API | ✅ Working |
-| Add Description | TextInput with multiline support | ✅ Working |
-| Browse Entries | ScrollView with mapped journal entries | ✅ Working |
-| Filter by Category | Button-based category filter | ✅ Working |
-| Edit Entry | UPDATE SQL query with pre-filled form | ✅ Working |
-| Delete Entry | DELETE SQL query with confirmation alert | ✅ Working |
-| SQLite Database | Local persistent storage | ✅ Working |
-| Camera (Huawei) | expo-camera API | ❌ Device limitation |
+| User Registration | SQLite users table with unique email constraint | Working |
+| User Login | Email/password authentication | Working |
+| Gallery Image Picker | Expo ImagePicker API | Working |
+| Add Description | TextInput with multiline support | Working |
+| Browse Entries | ScrollView with mapped journal entries | Working |
+| Filter by Category | Button-based category filter | Working |
+| Edit Entry | UPDATE SQL query with pre-filled form | Working |
+| Delete Entry | DELETE SQL query with confirmation alert | Working |
+| SQLite Database | Local persistent storage | Working |
+| Camera (Huawei) | expo-camera API | Device limitation |
 
 ---
 
@@ -153,21 +153,21 @@ CREATE TABLE journals (
 
 | Test Case | Expected Result | Actual Result |
 |-----------|----------------|----------------|
-| Register new user | Account created | ✅ PASS |
-| Login with valid credentials | Navigate to Home | ✅ PASS |
-| Login with invalid credentials | Error message | ✅ PASS |
-| Select image from gallery | Image preview shows | ✅ PASS |
-| Add description | Text saved | ✅ PASS |
-| Select category | Category saved | ✅ PASS |
-| Save entry | Entry in database | ✅ PASS |
-| Filter by Breakfast | Only Breakfast entries | ✅ PASS |
-| Filter by Lunch | Only Lunch entries | ✅ PASS |
-| Filter by Dinner | Only Dinner entries | ✅ PASS |
-| Filter by Snacks | Only Snacks entries | ✅ PASS |
-| Edit entry description | Updated description | ✅ PASS |
-| Edit entry category | Updated category | ✅ PASS |
-| Delete entry | Entry removed | ✅ PASS |
-| Take photo with camera | Photo captured | ❌ FAIL (Huawei limitation) |
+| Register new user | Account created | PASS |
+| Login with valid credentials | Navigate to Home | PASS |
+| Login with invalid credentials | Error message | PASS |
+| Select image from gallery | Image preview shows | PASS |
+| Add description | Text saved | PASS |
+| Select category | Category saved | PASS |
+| Save entry | Entry in database | PASS |
+| Filter by Breakfast | Only Breakfast entries | PASS |
+| Filter by Lunch | Only Lunch entries | PASS |
+| Filter by Dinner | Only Dinner entries | PASS |
+| Filter by Snacks | Only Snacks entries | PASS |
+| Edit entry description | Updated description | PASS |
+| Edit entry category | Updated category | PASS |
+| Delete entry | Entry removed | PASS |
+| Take photo with camera | Photo captured | FAIL (Huawei limitation) |
 
 ---
 
@@ -198,13 +198,47 @@ All code has been tested and verified on the target device. The application is r
 
 ---
 
-## 8. GitHub Repository
+## 8. Screenshots (Proof of Functionality)
+
+### 1. Login Screen
+![Login Screen](screenshots/1-login-screen.jpg)
+
+### 2. Adding a Journal Entry
+![Add Entry](screenshots/2-add-entry.jpg)
+
+### 3. Journal List
+![Journal List](screenshots/3-journal-list.jpg)
+
+### 4. Journal List (Alternative View)
+![Journal List 2](screenshots/4-journal-list.jpg)
+
+### 5. Filter by Breakfast
+![Breakfast Filter](screenshots/5-filter-breakfast.jpg)
+
+### 6. Filter by Lunch
+![Lunch Filter](screenshots/6-filter-lunch.jpg)
+
+### 7. Filter by Dinner
+![Dinner Filter](screenshots/7-filter-dinner.jpg)
+
+### 8. Filter by Snack
+![Snack Filter](screenshots/8-filter-snack.jpg)
+
+### 9. Edit Entry
+![Edit Entry](screenshots/9-edit-entry.jpg)
+
+### 10. Delete Confirmation
+![Delete Entry](screenshots/10-delete-entry.jpg)
+
+---
+
+## 9. GitHub Repository
 
 **Repository Link:** https://github.com/theedanico2/Week11-15
 
 ---
 
-## 9. References
+## 10. References
 
 - [Expo SQLite Documentation](https://docs.expo.dev/versions/latest/sdk/sqlite/)
 - [Expo Camera Documentation](https://docs.expo.dev/versions/latest/sdk/camera/)

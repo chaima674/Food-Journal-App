@@ -153,7 +153,6 @@ const HomeScreen = ({ route }) => {
 
   return (
     <ScrollView style={styles.container}>
-      {/* Input Form */}
       <View style={styles.formCard}>
         <Text style={styles.sectionTitle}>{editingId ? 'Edit Entry' : 'Add New Entry'}</Text>
 
@@ -167,10 +166,10 @@ const HomeScreen = ({ route }) => {
 
         <View style={styles.buttonRow}>
           <TouchableOpacity style={styles.cameraBtn} onPress={() => setIsCameraOpen(true)}>
-            <Text style={styles.btnText}>📷 Camera</Text>
+            <Text style={styles.btnText}>Camera</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.galleryBtn} onPress={pickImage}>
-            <Text style={styles.btnText}>🖼️ Gallery</Text>
+            <Text style={styles.btnText}>Gallery</Text>
           </TouchableOpacity>
         </View>
 
@@ -211,7 +210,6 @@ const HomeScreen = ({ route }) => {
         )}
       </View>
 
-      {/* Journal List */}
       <View style={styles.listCard}>
         <Text style={styles.sectionTitle}>My Food Journal</Text>
 
@@ -230,8 +228,8 @@ const HomeScreen = ({ route }) => {
 
         {filteredJournals.length === 0 ? (
           <View style={styles.emptyContainer}>
-            <Text style={styles.emptyText}>📭 No entries yet</Text>
-            <Text style={styles.emptySubtext}>Add your first meal above!</Text>
+            <Text style={styles.emptyText}>No entries yet</Text>
+            <Text style={styles.emptySubtext}>Add your first meal above</Text>
           </View>
         ) : (
           filteredJournals.map(item => (
@@ -270,7 +268,6 @@ const HomeScreen = ({ route }) => {
         )}
       </View>
 
-      {/* Camera Modal */}
       <Modal visible={isCameraOpen} animationType="slide">
         <View style={styles.cameraContainer}>
           <Camera style={styles.camera} type="back" ref={ref => setCamera(ref)} />
@@ -289,274 +286,55 @@ const HomeScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
-  centered: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  loadingText: {
-    marginTop: 10,
-    color: '#666',
-  },
-  formCard: {
-    backgroundColor: 'white',
-    margin: 15,
-    padding: 15,
-    borderRadius: 12,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  listCard: {
-    backgroundColor: 'white',
-    margin: 15,
-    marginTop: 0,
-    padding: 15,
-    borderRadius: 12,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 15,
-    color: '#333',
-  },
-  previewImage: {
-    width: '100%',
-    height: 200,
-    borderRadius: 10,
-    marginBottom: 15,
-  },
-  imagePlaceholder: {
-    width: '100%',
-    height: 200,
-    backgroundColor: '#e0e0e0',
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  placeholderText: {
-    color: '#999',
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 15,
-  },
-  cameraBtn: {
-    backgroundColor: '#4285f4',
-    padding: 12,
-    borderRadius: 8,
-    flex: 0.48,
-    alignItems: 'center',
-  },
-  galleryBtn: {
-    backgroundColor: '#34a853',
-    padding: 12,
-    borderRadius: 8,
-    flex: 0.48,
-    alignItems: 'center',
-  },
-  btnText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    padding: 12,
-    marginBottom: 15,
-    fontSize: 16,
-    minHeight: 80,
-    textAlignVertical: 'top',
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 8,
-    color: '#555',
-  },
-  categoryRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom: 15,
-  },
-  categoryBtn: {
-    backgroundColor: '#e0e0e0',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 20,
-    marginRight: 8,
-    marginBottom: 8,
-  },
-  categoryText: {
-    color: '#333',
-  },
-  categoryTextActive: {
-    color: 'white',
-  },
-  saveBtn: {
-    backgroundColor: '#34a853',
-    padding: 15,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  saveBtnText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  cancelBtn: {
-    backgroundColor: '#ea4335',
-    padding: 15,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  cancelBtnText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  filterRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom: 15,
-  },
-  filterBtn: {
-    paddingVertical: 6,
-    paddingHorizontal: 12,
-    borderRadius: 20,
-    marginRight: 8,
-    marginBottom: 8,
-    backgroundColor: '#e0e0e0',
-  },
-  filterBtnActive: {
-    backgroundColor: '#4285f4',
-  },
-  filterText: {
-    color: '#333',
-  },
-  filterTextActive: {
-    color: 'white',
-  },
-  emptyContainer: {
-    alignItems: 'center',
-    padding: 30,
-  },
-  emptyText: {
-    fontSize: 18,
-    color: '#999',
-    marginBottom: 5,
-  },
-  emptySubtext: {
-    fontSize: 14,
-    color: '#bbb',
-  },
-  journalItem: {
-    flexDirection: 'row',
-    marginBottom: 15,
-    borderWidth: 1,
-    borderColor: '#eee',
-    borderRadius: 10,
-    padding: 10,
-  },
-  journalImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 8,
-  },
-  journalInfo: {
-    flex: 1,
-    marginLeft: 10,
-  },
-  journalDesc: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  journalCategory: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  journalDate: {
-    fontSize: 10,
-    color: '#888',
-    marginBottom: 8,
-  },
-  actionRow: {
-    flexDirection: 'row',
-  },
-  actionBtn: {
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    borderRadius: 5,
-    marginRight: 10,
-  },
-  editAction: {
-    backgroundColor: '#fbbc05',
-  },
-  deleteAction: {
-    backgroundColor: '#ea4335',
-  },
-  actionText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 12,
-  },
-  cameraContainer: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
-  camera: {
-    flex: 1,
-  },
-  cameraControls: {
-    position: 'absolute',
-    bottom: 30,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-  },
-  captureBtn: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
-    backgroundColor: 'rgba(255,255,255,0.3)',
-    borderWidth: 3,
-    borderColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  captureInner: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: 'white',
-  },
-  closeCamera: {
-    backgroundColor: '#ff4444',
-    padding: 12,
-    borderRadius: 8,
-  },
-  closeCameraText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
+  container: { flex: 1, backgroundColor: '#f5f5f5' },
+  centered: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  loadingText: { marginTop: 10, color: '#666' },
+  formCard: { backgroundColor: 'white', margin: 15, padding: 15, borderRadius: 12, elevation: 3 },
+  listCard: { backgroundColor: 'white', margin: 15, marginTop: 0, padding: 15, borderRadius: 12, elevation: 3 },
+  sectionTitle: { fontSize: 20, fontWeight: 'bold', marginBottom: 15, color: '#333' },
+  previewImage: { width: '100%', height: 200, borderRadius: 10, marginBottom: 15 },
+  imagePlaceholder: { width: '100%', height: 200, backgroundColor: '#e0e0e0', borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginBottom: 15 },
+  placeholderText: { color: '#999' },
+  buttonRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 15 },
+  cameraBtn: { backgroundColor: '#4285f4', padding: 12, borderRadius: 8, flex: 0.48, alignItems: 'center' },
+  galleryBtn: { backgroundColor: '#34a853', padding: 12, borderRadius: 8, flex: 0.48, alignItems: 'center' },
+  btnText: { color: 'white', fontWeight: 'bold' },
+  input: { borderWidth: 1, borderColor: '#ddd', borderRadius: 8, padding: 12, marginBottom: 15, fontSize: 16, minHeight: 80 },
+  label: { fontSize: 16, fontWeight: 'bold', marginBottom: 8, color: '#555' },
+  categoryRow: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 15 },
+  categoryBtn: { backgroundColor: '#e0e0e0', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 20, marginRight: 8, marginBottom: 8 },
+  categoryText: { color: '#333' },
+  categoryTextActive: { color: 'white' },
+  saveBtn: { backgroundColor: '#34a853', padding: 15, borderRadius: 8, alignItems: 'center', marginBottom: 10 },
+  saveBtnText: { color: 'white', fontWeight: 'bold', fontSize: 16 },
+  cancelBtn: { backgroundColor: '#ea4335', padding: 15, borderRadius: 8, alignItems: 'center' },
+  cancelBtnText: { color: 'white', fontWeight: 'bold' },
+  filterRow: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 15 },
+  filterBtn: { paddingVertical: 6, paddingHorizontal: 12, borderRadius: 20, marginRight: 8, marginBottom: 8, backgroundColor: '#e0e0e0' },
+  filterBtnActive: { backgroundColor: '#4285f4' },
+  filterText: { color: '#333' },
+  filterTextActive: { color: 'white' },
+  emptyContainer: { alignItems: 'center', padding: 30 },
+  emptyText: { fontSize: 18, color: '#999', marginBottom: 5 },
+  emptySubtext: { fontSize: 14, color: '#bbb' },
+  journalItem: { flexDirection: 'row', marginBottom: 15, borderWidth: 1, borderColor: '#eee', borderRadius: 10, padding: 10 },
+  journalImage: { width: 80, height: 80, borderRadius: 8 },
+  journalInfo: { flex: 1, marginLeft: 10 },
+  journalDesc: { fontSize: 14, fontWeight: 'bold', marginBottom: 4 },
+  journalCategory: { fontSize: 12, fontWeight: 'bold', marginBottom: 4 },
+  journalDate: { fontSize: 10, color: '#888', marginBottom: 8 },
+  actionRow: { flexDirection: 'row' },
+  actionBtn: { paddingHorizontal: 15, paddingVertical: 5, borderRadius: 5, marginRight: 10 },
+  editAction: { backgroundColor: '#fbbc05' },
+  deleteAction: { backgroundColor: '#ea4335' },
+  actionText: { color: 'white', fontWeight: 'bold', fontSize: 12 },
+  cameraContainer: { flex: 1, backgroundColor: 'black' },
+  camera: { flex: 1 },
+  cameraControls: { position: 'absolute', bottom: 30, width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20 },
+  captureBtn: { width: 70, height: 70, borderRadius: 35, backgroundColor: 'rgba(255,255,255,0.3)', borderWidth: 3, borderColor: 'white', justifyContent: 'center', alignItems: 'center' },
+  captureInner: { width: 60, height: 60, borderRadius: 30, backgroundColor: 'white' },
+  closeCamera: { backgroundColor: '#ff4444', padding: 12, borderRadius: 8 },
+  closeCameraText: { color: 'white', fontWeight: 'bold' },
 });
 
 export default HomeScreen;

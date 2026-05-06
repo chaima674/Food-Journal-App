@@ -40,7 +40,6 @@ const AuthScreen = ({ navigation }) => {
     setIsLoading(true);
     try {
       if (isLogin) {
-        // Login logic
         const result = await executeSql(
           'SELECT id FROM users WHERE email = ? AND password = ?',
           [email, password]
@@ -53,7 +52,6 @@ const AuthScreen = ({ navigation }) => {
           Alert.alert('Authentication Failed', 'Invalid email or password');
         }
       } else {
-        // Registration logic
         const checkResult = await executeSql(
           'SELECT id FROM users WHERE email = ?',
           [email]
